@@ -25,10 +25,10 @@ Route::get('/', function () {
 Route::post('actionlogin', [LoginController::class, 'actionlogin'])->name('actionlogin');
 Route::post('logout', [logincontroller::class, 'actionlogout'])->name('logout')->middleware('auth');
 
-Route::get('home', [isicontroller::class, 'index'])->name('home');
+Route::get('home', [isicontroller::class, 'index'])->name('home')->middleware('auth');
 
 Route::resource('absen', AbsenController::class)->middleware('aktif');
-Route::resource('absenpulang', absenkeluarcontroller::class);
+Route::resource('absenpulang', absenkeluarcontroller::class)->middleware(('aktif'));
 
 Route::resource('user', UserController::class)->middleware('admin');
 
