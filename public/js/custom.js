@@ -18,5 +18,5 @@ function fillDigitalClock() {
     var formattedTime = hours + ":" + minutes;
 
     // Set nilai input dengan waktu yang sudah diformat
-    $("#waktu_pulang").val(formattedTime);
+    $("#presensi_keluar").val(formattedTime);
 }

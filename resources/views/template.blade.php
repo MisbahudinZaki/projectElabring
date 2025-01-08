@@ -14,103 +14,114 @@
 
     <style>
         body {
-            display: flex;
-            min-height: 100vh;
-            flex-direction: column;
-        }
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
 
-        .navbar{
-            background: #5d6063;
-        }
-        .sidebar {
-            width: 250px;
-            position: fixed;
-            top: 0;
-            bottom: 0;
-            left: 0;
-            background-color: #212529;
-            padding-top: 1rem;
-        }
-        .sidebar a {
-            color: #adb5bd;
-            text-decoration: none;
-            padding: 0.75rem 1rem;
-            display: block;
-        }
-        .sidebar a:hover {
-            background-color: #343a40;
-            color: white;
-        }
-        .content {
-            margin-left: 250px;
-            padding: 2rem;
-        }
+.sidebar {
+    height: 100%;
+    width: 250px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #111;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+    transform: translateX(-100%);
+}
+
+.sidebar ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.sidebar ul li {
+    padding: 8px 8px 8px 32px;
+    text-align: left;
+}
+
+.sidebar ul li a {
+    color: white;
+    text-decoration: none;
+    display: block;
+}
+
+.sidebar ul li a:hover {
+    background-color: #575757;
+}
+
+.sidebar .close-btn {
+    position: absolute;
+    top: 10px;
+    right: 25px;
+    font-size: 36px;
+    background: none;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.main-content {
+    margin-left: 0;
+    padding: 16px;
+    transition: margin-left 0.5s;
+}
+
+.open-btn {
+    font-size: 30px;
+    cursor: pointer;
+    background-color: #111;
+    color: white;
+    border: none;
+    padding: 1px 2px;
+    position: left;
+}
+
+.sidebar.open {
+    transform: translateX(0);
+}
+
+.main-content.open {
+    margin-left: 250px;
+}
+
     </style>
 </head>
 <body>
-   <!-- <nav class="navbar bg-body-tertiary">
+    <nav class="navbar bg-body-tertiary">
+
         <div class="container-fluid">
-          <a class="navbar-brand">Navbar</a>
+            <button class="open-btn" onclick="toggleSidebar()">☰</button>
+          <a class="navbar-brand">Electronik Absensi Daring</a>
+
           <form class="d-flex" role="search">
             <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
             <button class="btn btn-outline-success" type="submit">Search</button>
           </form>
         </div>
-      </nav>-->
+      </nav>
 
-      <nav class="navbar navbar-dark navbar-expand-lg">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="#">MyApp</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Paviliun Taiping</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Nations</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-
-            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                <i class="fas fa-user-alt"></i> {{ Auth::user()->name }}
-            </a>
-
-            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="{{ route('logout') }}"
-                   onclick="event.preventDefault();
-                                 document.getElementById('logout-form').submit();">
-                    <i class="fas fa-sign-out-alt"></i> {{ __('Logout') }}
-                </a>
-
-                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                    @csrf
-                </form>
-            </div>
-
-    </nav>
-
-      <div class="sidebar">
-        <center>'
-
-        </center>
-        <a href="#">Dashboard</a>
-        <a href="#">Users</a>
-        <a href="#">Settings</a>
-        <a href="#">Logout</a>
+      <div class="sidebar" id="sidebar">
+        <button class="close-btn" onclick="toggleSidebar()">×</button>
+        <ul>
+            <li><a href="{{ route('home') }}"><i class="fas fa-tachometer-alt"></i>  Home</a></li>
+            <li><a href="{{ route('absen.index') }}"><i class="fas fa-border-all"></i> Absen</a></li>
+            <li><a href=""><i class="fas fa-user"></i> User</a></li>
+            <li><a href="#about">About</a></li>
+        </ul>
     </div>
 
-    <div class="container mt-5 content">
+
+
+    <div class="container mt-5 main-content" id="main-content">
+
         @include('sweetalert::alert')
         @yield('isi')
     </div>
+
+
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
@@ -134,6 +145,16 @@
   <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
  <script src="js/myscript.js"></script>
  <script src="bootstrap/js/bootstrap.min.js"></script>
+
+<script>
+    function toggleSidebar() {
+    const sidebar = document.getElementById('sidebar');
+    const mainContent = document.getElementById('main-content');
+    sidebar.classList.toggle('open');
+    mainContent.classList.toggle('open');
+}
+
+</script>
 
 </body>
 </html>

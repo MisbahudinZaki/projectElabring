@@ -30,8 +30,7 @@ class AbsensiController extends Controller
      */
     public function create()
     {
-        $ket=Keterangan::all();
-        return view('absen.create', compact('ket'));
+
     }
 
     /**
@@ -46,8 +45,6 @@ class AbsensiController extends Controller
             'status_masuk' => 'required',
             'keterangan'=>'nullable',
             'lokasi'=> 'nullable',
-            'latitude' => 'required|numeric',
-            'longitude' => 'required|numeric',
             'user_id'=>'required',
 
 
@@ -56,7 +53,7 @@ class AbsensiController extends Controller
         $existData = absen::where('tanggal', $request->tanggal)->first();
 
         if($existData){
-            Alert :: info('info','data sudah ada');
+            Alert :: info('info','Data sudah ada');
             return redirect()->back()->with('error','data pada tanggal tersebut sudah ada');
         }
 
@@ -83,8 +80,6 @@ class AbsensiController extends Controller
             'status_masuk' => $status,
             'user_id'=> $request->user_id,
             'lokasi'=>$request->lokasi,
-            'latitude'=>$request->latitude,
-            'longitude'=>$request->longitude
         ]);
 
         Alert :: success('success','data berhasil disimpan');

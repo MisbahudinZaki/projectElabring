@@ -1,6 +1,7 @@
 <?php
 
-use App\Http\Controllers\AbsensiController;
+use App\Http\Controllers\AbsenController;
+use App\Http\Controllers\absenkeluarcontroller;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\isicontroller;
 use App\Http\Controllers\LoginController;
@@ -18,8 +19,10 @@ use App\Http\Controllers\LoginController;
 
 Route::get('/', function () {
     return view('login');
-});
+})->name('login');
 Route::post('actionlogin', [LoginController::class, 'actionlogin'])->name('actionlogin');
 Route::post('logout', [logincontroller::class, 'actionlogout'])->name('logout')->middleware('auth');
 Route::get('home', [isicontroller::class, 'index'])->name('home');
-Route::resource('absen', AbsensiController::class);
+Route::resource('absen', AbsenController::class);
+Route::resource('absenpulang', absenkeluarcontroller::class);
+

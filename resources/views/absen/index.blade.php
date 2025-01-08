@@ -31,11 +31,7 @@
                                                         aria-label="Close"></button>
                                                 </div>
                                                 <div class="modal-body">
-
                                                     @csrf
-
-
-
                                                     <div class="form-group">
                                                         <label class="font-weight-bold">id</label>
                                                         <input type="number"
@@ -46,8 +42,8 @@
                                                     <div class="form-group">
                                                         <label class="font-weight-bold">nama</label>
                                                         <input type="text"
-                                                            class="form-control @error('nama_pegawai') is-invalid  @enderror"
-                                                            value="{{ Auth::user()->name }}" name="nama_pegawai"
+                                                            class="form-control @error('nama') is-invalid  @enderror"
+                                                            value="{{ Auth::user()->name }}" name="nama"
                                                             placeholder="masukkan nama">
                                                     </div>
 
@@ -61,9 +57,8 @@
 
                                                     <div class="form-group">
                                                         <label class="font-weight-bold">keterangan</label>
-                                                        <select class="form-control select2" style="width: 100%"
-                                                            name="keterangan_id" id="keterangan_id">
-                                                            <option disabled value>Pilih</option>
+                                                        <select class="form-control select2" style="width: 100%" name="keterangan" id="keterangan">
+                                                                <option disabled value="Pilih">Pilih</option>
                                                                 <option value="Hadir">Hadir</option>
                                                                 <option value="Sakit">Sakit</option>
                                                                 <option value="Izin">Izin</option>
@@ -130,12 +125,12 @@
                                     @foreach ($absensi as $absen)
                                         <tr>
                                             <td>{{ $absen->user->id }}</td>
-                                            <td>{{ $absen->nama_pegawai }}</td>
+                                            <td>{{ $absen->nama }}</td>
 
                                             <td>{{ $absen->tanggal }}</td>
-                                            <td>{{ $absen->keterangan->keterangan }}</td>
+                                            <td>{{ $absen->keterangan }}</td>
                                             <td>{{ $absen->presensi_masuk }}</td>
-                                            <td>{{ $absen->waktu_pulang }}</td>
+                                            <td>{{ $absen->presensi_keluar }}</td>
                                             <td>
                                                 <form onsubmit="return confirm('Apakah anda yakin')"
                                                     action="{{ route('absen.destroy', $absen->id) }}" method="POST"
@@ -180,10 +175,10 @@
                                                                             Pulang</label>
 
                                                                         <input type="time"
-                                                                            class="form-control @error('waktu_pulang') is-invalid @enderror"
-                                                                            name="waktu_pulang"
-                                                                            value="{{ old('waktu_pulang', $absen->waktu_pulang) }}"
-                                                                            id="waktu_pulang" readonly>
+                                                                            class="form-control @error('presensi_keluar') is-invalid @enderror"
+                                                                            name="presensi_keluar"
+                                                                            value="{{ old('presensi_keluar', $absen->presensi_keluar) }}"
+                                                                            id="presensi_keluar" readonly>
                                                                     </div>
 
                                                                     <div class="modal-footer">

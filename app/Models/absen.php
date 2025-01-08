@@ -18,6 +18,8 @@ class absen extends Model
         'tanggal',
         'keterangan',
         'lokasi',
+        'latitude',
+        'longitude',
         'presensi_masuk',
         'presensi_keluar',
         'status_masuk',

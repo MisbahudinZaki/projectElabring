@@ -18,8 +18,6 @@ return new class extends Migration
             $table->date('tanggal');
             $table->string("keterangan");
             $table->string('lokasi');
-            $table->decimal('latitude', 10, 8);
-            $table->decimal('longitude', 11, 8);
             $table->string('presensi_masuk')->nullable();
             $table->string('presensi_keluar')->nullable();
             $table->string('status_masuk')->nullable();
