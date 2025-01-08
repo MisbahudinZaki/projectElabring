@@ -108,7 +108,7 @@
         <ul>
             <li><a href="{{ route('home') }}"><i class="fas fa-tachometer-alt"></i>  Home</a></li>
             <li><a href="{{ route('absen.index') }}"><i class="fas fa-border-all"></i> Absen</a></li>
-            <li><a href=""><i class="fas fa-user"></i> User</a></li>
+            <li><a href="{{ route('user.index') }}"><i class="fas fa-user"></i> User</a></li>
             <li><a href="#about">About</a></li>
         </ul>
     </div>
@@ -141,6 +141,8 @@
   <script src="{{ asset('js/date.js') }}"></script>
 
   <script src="{{ asset('js/location.js') }}"></script>
+
+  <script src="{{ asset('js/exit.js') }}"></script>
 
   <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
  <script src="js/myscript.js"></script>

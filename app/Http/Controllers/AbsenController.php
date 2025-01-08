@@ -6,17 +6,19 @@ use App\Models\absen;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
-use Alert;
+use Illuminate\Support\Facades\Auth;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class AbsenController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
-    {
-        $absensi = absen::with('user')->paginate(10);
-        return view('absen.index', compact('absensi'));
+    public function index() {
+        $user =Auth::user();
+        $absensi = absen::with('user')->where("user_id", $user->id,)->latest()->get();
+        //$absensi=absen::with('absen_pulangs','users')->paginate(10);
+        return view("absen.index", compact("absensi"));
     }
 
     /**
@@ -32,12 +34,12 @@ class AbsenController extends Controller
      */
     public function store(Request $request)
     {
+        $exists = Absen::where('user_id', $request->user_id)
+        ->where('tanggal', $request->tanggal)
+        ->exists();
 
-            $existData = absen::where('tanggal', $request->tanggal)->first();
-
-        if($existData){
-            Alert :: info('info','Data sudah ada');
-            return redirect()->back()->with('error','data pada tanggal tersebut sudah ada');
+        if ($exists) {
+            return redirect()->back()->with('error', 'Absensi untuk user ini pada tanggal yang sama sudah ada.');
         }
 
         $entryTime = $request->input('presensi_masuk');
@@ -98,8 +100,11 @@ class AbsenController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy($id)
     {
-        //
+        $absensi = absen::find($id);
+        $absensi->destroy($id);
+        Alert :: success('success','Data berhasil dihapus');
+        return redirect()->route('absen.index');
     }
 }

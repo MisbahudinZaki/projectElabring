@@ -4,18 +4,15 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 
-class isicontroller extends Controller
+class EditUserController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $user = Auth::user();
-        $users = User::where('id', $user->id)->get();
-        return view('isi.home', compact('users'));
+        //
     }
 
     /**
@@ -53,9 +50,9 @@ class isicontroller extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, $id)
     {
-        //
+       
     }
 
     /**

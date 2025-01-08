@@ -3,12 +3,15 @@
 @section('isi')
 
     <body style="background: lightgray">
-
+        <div class=" alert alert-primary">
+            <b>Selamat Datang</b> | {{session('error')}}
+        </div>
         <div class="container mt-5">
             <div class="row">
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-body">
+
                            <!--  <a href="" class="btn btn-primary"><i -->
 
                             <!-- <a href="" class="btn btn-success"><i class="fas fa-solid fa-plus-square"></i> Datang</a><br>-->
@@ -132,15 +135,10 @@
                                             <td>{{ $absen->presensi_masuk }}</td>
                                             <td>{{ $absen->presensi_keluar }}</td>
                                             <td>
-                                                <form onsubmit="return confirm('Apakah anda yakin')"
-                                                    action="{{ route('absen.destroy', $absen->id) }}" method="POST"
-                                                    enctype="multipart/form-data">
+                                                <form action="{{ route('absen.destroy', $absen->id) }}" method="post" enctype="multipart/form-data">
                                                     @csrf
                                                     @method('DELETE')
-                                                    <a href="{{ route('absen.edit', $absen->id) }}"
-                                                        class="btn btn-md btn-primary"><i class="fas fa-edit"></i> Edit</a>
-                                                    <button class="btn btn-md btn-danger" type="submit"><i
-                                                            class="fas fa-trash-alt"></i> Hapus</button>
+                                                    <button type="submit" class="btn btn-danger"><i class="fas fa-trash-alt"> Delete</i></button>
                                                 </form>
                                             </td>
 
@@ -182,10 +180,7 @@
                                                                     </div>
 
                                                                     <div class="modal-footer">
-                                                                        <button type="submit"
-                                                                            class="btn btn-primary col-md-12"
-                                                                            name="update">KLIK UNTUK PRESENSI
-                                                                            KELUAR</button>
+                                                                        <button type="submit" name="update" class="btn btn-primary" onclick="setExitTime()">Tambah Absensi</button>
                                                                     </div>
                                                                 </div>
                                                             </div>
