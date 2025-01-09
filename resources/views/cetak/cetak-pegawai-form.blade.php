@@ -20,7 +20,7 @@
                     '/' + document.getElementById('tglakhir').value "
                     target="_blank" class="btn btn-primary"><i class="fas fa-print"></i>cetak</a>
 
-                    <button type="submit" class="btn btn-danger"><i class="fas fa-sign-out-alt"> Cancel</i></button>
+                    <a href="{{ route('absen.index') }}" class="btn btn-danger"><i class="fas fa-sign-out-alt"> Cancel</i></a>
                 </div>
 
 
