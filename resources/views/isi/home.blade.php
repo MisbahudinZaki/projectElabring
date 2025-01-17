@@ -35,7 +35,9 @@
                             <tr>
                                 <td></td>
                                 <td>:</td>
-                                <td><a href="{{route('user.edit', $user->id)}}" class="btn btn-primary"><i class="fas fa-edit"></i> EDIT</a></td>
+                                <td><a href="{{route('user.edit', $user->id)}}" class="btn btn-primary"><i class="fas fa-edit"></i> EDIT</a> | 
+                                <a href="{{ route('changepassword') }}" class="btn btn-primary"><i class="fas fa-edit">Ganti Password</i></a>
+                                </td>
                             </tr>
 
                         @endforeach

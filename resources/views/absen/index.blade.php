@@ -19,7 +19,7 @@
                             <td>
                                 <!-- <a href="" class="btn btn-success">Absen Pulang</a>-->
 
-                                <a href="{{ route('cetak-pegawai-form') }}" class="btn btn-primary"><i class="fas fa-regular fa-print"></i> Cetak</a>
+                               
 
                                 <button type="button" class="btn btn-success    " data-bs-toggle="modal"
                                     data-bs-target="#myModal">

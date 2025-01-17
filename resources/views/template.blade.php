@@ -87,6 +87,13 @@
     margin-left: 250px;
 }
 
+.list-menu{
+    font-size: 22px;
+    text-decoration: none;
+    color: white;
+    text-align: left;
+}
+
     </style>
 </head>
 <body>
@@ -94,7 +101,7 @@
 
         <div class="container-fluid">
             <button class="open-btn" onclick="toggleSidebar()">☰</button>
-          <a class="navbar-brand">Electronik Absensi Daring</a>
+          <a class="navbar-brand">Elektronik Absensi Daring</a>
 
           <form class="d-flex" role="search">
             <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
@@ -105,12 +112,30 @@
 
       <div class="sidebar" id="sidebar">
         <button class="close-btn" onclick="toggleSidebar()">×</button>
-        <ul>
-            <li><a href="{{ route('home') }}"><i class="fas fa-tachometer-alt"></i>  Home</a></li>
-            <li><a href="{{ route('absen.index') }}"><i class="fas fa-border-all"></i> Absen</a></li>
-            <li><a href="{{ route('user.index') }}"><i class="fas fa-user"></i> User</a></li>
-            <li><a href="#about">About</a></li>
-        </ul>
+
+        <div class=" container" style="align-items: center;">
+            <img src="gambar/Logo baznas.jpg" alt="Logo Baznas" height="200px" width="200px" style="align-content: center;">
+        </div>
+        <div class="container">
+            <ul>
+                <li></li>
+            </ul>
+        </div>
+        <div class=" container list-menu">
+           <ul>
+            <li> <a href="{{ route('home') }}"><i class="fas fa-tachometer-alt"></i>  Home</a></li>
+            <li></li>
+            <li> <a href="{{ route('absen.index') }}"><i class="fas fa-border-all"></i> Absen</a></li>
+            <li></li>
+            <li> <a href="{{ route('user.index') }}"><i class="fas fa-user"></i> User</a></li>
+            <li></li>
+            <li> <a href="{{ route('cetak-pegawai-form') }}"><i class="fas fa-regular fa-print"></i> Cetak</a></li>
+            <li></li>
+            <li> <a href="{{ route('logout') }}"><i class="fas fa-power-off"> Logout</i></a></li>
+
+           </ul>
+        </div>
+
     </div>
 
 

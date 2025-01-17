@@ -23,7 +23,7 @@ Route::get('/', function () {
     return view('login');
 })->name('login');
 Route::post('actionlogin', [LoginController::class, 'actionlogin'])->name('actionlogin');
-Route::post('logout', [logincontroller::class, 'actionlogout'])->name('logout')->middleware('auth');
+Route::get('/logout', [LoginController::class, 'logout'])->name('logout')->middleware('auth');
 
 Route::get('home', [isicontroller::class, 'index'])->name('home')->middleware('auth');
 
