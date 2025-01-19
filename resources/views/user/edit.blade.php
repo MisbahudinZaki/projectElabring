@@ -11,8 +11,8 @@
                             @method('PUT')
 
                             <div class="form-group">
-                                <label class="font-weight-bold">Nama</label>
-                                <input type="text" class="form-control @error('name') is-invalid @enderror" value="{{old('name', $user->name)}}" name="name">
+                                <label class="font-weight-bold">User ID</label>
+                                <input type="text" class="form-control @error('user_id') is-invalid @enderror" value="{{old('user_id', $user->user_id)}}" name="user_id">
                             </div>
 
                             <div class="form-group">

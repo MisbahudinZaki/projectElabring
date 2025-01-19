@@ -18,50 +18,50 @@
                                 <tbody class="text-center">
                                     <tr>
                                         @foreach ($hadir as $item)
-                                            @if ($item->user_id == $user->id)
+                                            @if ($item->user_id == $user->user_id)
                                                 <td>Kehadiran : {{ $item->hadir_count }}</td>
                                             @endif
                                         @endforeach
 
                                         @foreach ($pulangcepat as $pc)
-                                            @if ($pc->user_id == $user->id)
+                                            @if ($pc->user_id == $user->user_id)
                                             <td>Pulang Cepat : {{$pc->pc_count}}</td>
                                             @endif
                                         @endforeach
 
                                         @foreach($telat as $lambat)
-                                        @if ($lambat->user_id == $user->id)
+                                        @if ($lambat->user_id == $user->user_id)
 
                                         <td>Terlambat :  {{$lambat->late_count}}</td>
                                         @endif
                                         @endforeach
 
                                         @foreach ($sakit as $sak)
-                                        @if ($sak->user_id == $user->id)
+                                        @if ($sak->user_id == $user->user_id)
                                         <td>Sakit : {{ $sak->sick_count }}</td>
                                         @endif
                                         @endforeach
 
                                         @foreach ($cuti as $cut)
-                                            @if ($cut->user_id == $user->id)
+                                            @if ($cut->user_id == $user->user_id)
                                             <td>Cuti : {{ $cut->cuti_count }}</td>
                                             @endif
                                         @endforeach
 
                                         @foreach ($izin as $is)
-                                            @if ($is->user_id == $user->id)
+                                            @if ($is->user_id == $user->user_id)
                                             <td>Izin : {{ $is->izin_count }}</td>
                                             @endif
                                         @endforeach
 
                                         @foreach ($dinas as $din)
-                                            @if ($din->user_id == $user->id)
+                                            @if ($din->user_id == $user->user_id)
                                             <td>Dinas Luar : {{ $din->dinas_count }}</td>
                                             @endif
                                         @endforeach
 
                                         @foreach ($tdkabspulang as $item)
-                                            @if ($item->user_id == $user->id)
+                                            @if ($item->user_id == $user->user_id)
                                                 <td>Tidak Presensi Keluar : {{$item->tdkabsplng_count}}</td>
                                             @endif
                                         @endforeach

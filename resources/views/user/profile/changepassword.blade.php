@@ -25,7 +25,7 @@
                             <label for="new-password" class="col-md-4 control-label">Password Sekarang</label>
 
                             <div class="col-md-6">
-                                <input type="password" name="current-password" id="current-password" required>
+                                <input type="password" name="current-password" class="form-control" id="current-password" required>
                                 @if ($errors->has('current-password'))
                                     <span class="help-block">
                                         <strong>{{$errors->first('current-password')}}</strong>

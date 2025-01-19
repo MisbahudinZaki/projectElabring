@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 
-class EditUserController extends Controller
+class UserStatusController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -42,9 +42,9 @@ class EditUserController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(User $status)
     {
-        //
+        return view('user.status', compact('status'));
     }
 
     /**
@@ -52,7 +52,14 @@ class EditUserController extends Controller
      */
     public function update(Request $request, $id)
     {
-       
+        $status = User::find($id);
+        $status->update([
+            'user_id'=>$request->user_id,
+            'name'=>$request->name,
+            'email'=>$request->email
+        ]);
+
+        return redirect()->route('home');
     }
 
     /**

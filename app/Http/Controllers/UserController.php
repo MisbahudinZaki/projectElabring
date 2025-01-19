@@ -61,6 +61,7 @@ class UserController extends Controller
 
    public function update(Request $request, $id){
     $this->validate($request, [
+        'user_id'=>'required',
         'nama'=>'required',
         'status'=>'required',
         'user_status'=>'required',
@@ -68,6 +69,7 @@ class UserController extends Controller
 
     $user= User::find($id);
     $user->update([
+        'user_id'=>$request->user_id,
         'nama'=>$request->nama,
         'status'=> $request->status,
         'user_status'=> $request->user_status,

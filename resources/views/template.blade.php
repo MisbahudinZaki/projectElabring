@@ -10,7 +10,7 @@
     <link rel="dns-prefetch" href="//fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
     <link rel="stylesheet" href="css/mystyle.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 
     <style>
         body {
@@ -131,7 +131,9 @@
             <li></li>
             <li> <a href="{{ route('cetak-pegawai-form') }}"><i class="fas fa-regular fa-print"></i> Cetak</a></li>
             <li></li>
-            <li> <a href="{{ route('logout') }}"><i class="fas fa-power-off"> Logout</i></a></li>
+            <li><a href="{{ route('about') }}"><i class="fas fa-info-circle"> About</i></a></li>
+            <li></li>
+            <li> <a href="{{ route('logout') }}">Logout</a></li>
 
            </ul>
         </div>
